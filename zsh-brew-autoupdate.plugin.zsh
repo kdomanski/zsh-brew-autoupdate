@@ -106,7 +106,7 @@ function check_outdated() {
             return
         fi
 
-        echo "[zsh-brew-autoupdate] Starting a Homebrew check for outdate packages in background."
+        echo "[zsh-brew-autoupdate] Starting a Homebrew check for outdated packages in background."
         check_outdated &>/dev/null &!
         return
     fi
