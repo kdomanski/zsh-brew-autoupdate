@@ -34,6 +34,14 @@ function update_homebrew() {
     if brew update &>/dev/null; then
         if brew outdated 2>/dev/null > "${ZSH_CACHE_DIR}/.brew-outdated" ; then
             update_last_updated_file "$(current_epoch)"
+
+            if command -v terminal-notifier &>/dev/null; then
+                local num_of_updates
+                num_of_updates="$(cat ${ZSH_CACHE_DIR}/.brew-outdated | wc -l)"
+                if [[ "$num_of_updates" -gt 0 ]]; then
+                    terminal-notifier -message "$num_of_updates updates are available" -title "Homebrew"
+                fi
+            fi
         fi
     fi
 }
