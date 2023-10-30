@@ -86,7 +86,7 @@ function update_homebrew() {
 
         firstpkg="$(head -n1 ${ZSH_CACHE_DIR}/.brew-outdated)"
         firstpkg="${firstpkg##*/}"
-        pkgmtime="$(date -r /usr/local/Cellar/${firstpkg}/*/INSTALL_RECEIPT.json '+%s')"
+        pkgmtime="$(date -r $HOMEBREW_CELLAR/${firstpkg}/*/INSTALL_RECEIPT.json '+%s')"
         outdatedmtime="$(date -r ${ZSH_CACHE_DIR}/.brew-outdated '+%s')"
 
         # was it installed after we checked for outdated packages?
